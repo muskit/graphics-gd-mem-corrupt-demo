@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://bu4qxx2jmx507"]
+
+[ext_resource type="Script" uid="uid://bvpcl0nysuevo" path="res://Thing.gd" id="1_ig7tw"]
+
+[sub_resource type="GDScript" id="GDScript_0xm2m"]
+script/source = "extends Node2D
+
+var my_dict: Dictionary[String, Array]
+
+var w: String
+var wb: Wordbag
+
+func _init():
+	wb = Wordbag.new()
+	wb.init(Wordbag.random_seed())
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	my_dict = {}
+	
+	var th: Thing = get_child(0)
+	w = wb.get_word(0)
+	#th.my_name = w
+	
+	# NOTE: uncomment the following line to preserve w
+	# (and maybe prevent a crash!?)
+	#th.text = w
+	my_dict[th.my_name] = []
+	my_dict[th.my_name].append(th)
+	
+	await get_tree().create_timer(3).timeout
+	th.queue_free()
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	print(my_dict, w)
+"
+
+[node name="Node2D" type="Node2D"]
+script = SubResource("GDScript_0xm2m")
+
+[node name="Thing" type="Label" parent="."]
+offset_left = 507.0
+offset_top = 277.0
+offset_right = 630.0
+offset_bottom = 329.0
+text = "shfsdfhdsfgsgdf"
+script = ExtResource("1_ig7tw")
