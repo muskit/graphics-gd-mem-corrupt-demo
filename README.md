@@ -12,11 +12,11 @@ Expected sample output (assume random word `w` is `wire`):
 { "Bob": [Thing:<Label#26575111510>] }wire
 { "Bob": [Thing:<Label#26575111510>] }wire
 ...
-{ "Bob": [<Freed Object>] }
-{ "Bob": [<Freed Object>] }
-{ "Bob": [<Freed Object>] }
-{ "Bob": [<Freed Object>] }
-{ "Bob": [<Freed Object>] }
+{ "Bob": [<Freed Object>] }wire
+{ "Bob": [<Freed Object>] }wire
+{ "Bob": [<Freed Object>] }wire
+{ "Bob": [<Freed Object>] }wire
+{ "Bob": [<Freed Object>] }wire
 ```
 Actual sample output:
 ```
