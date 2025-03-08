@@ -2,9 +2,7 @@ module gdextension
 
 go 1.24.0
 
-require (
-	graphics.gd v0.0.0-20250307052632-59761c82e6a6
-)
+require graphics.gd v0.0.0-20250308120206-21c59578d099
 
 require (
 	github.com/tetratelabs/wazero v1.9.0 // indirect

@@ -9,6 +9,8 @@ import (
 	"graphics.gd/classdb"
 	"graphics.gd/classdb/Engine"
 	"graphics.gd/classdb/Node"
+	"graphics.gd/variant/Packed"
+	"graphics.gd/variant/String"
 )
 
 type Wordbag struct {
@@ -31,29 +33,29 @@ func (w *Wordbag) Init(seed int64) {
 	w.initialized = true
 }
 
-func (w *Wordbag) GetWord(idx int64) string {
+func (w *Wordbag) GetWord(idx int64) String.Readable {
 	if !w.initialized {
 		Engine.Println("Tried to get a word from uninitialized wordbag!")
-		return ""
+		return String.New()
 	}
 	if idx < 0 {
 		Engine.Println("Tried to get wordbag word of index ", idx, "!")
-		return ""
+		return String.New()
 	}
 
-	return w.wb.GetWord(int(idx))
+	return String.New(w.wb.GetWord(int(idx)))
 }
 
-func (w *Wordbag) GetNext(count int64) []string {
+func (w *Wordbag) GetNext(count int64) Packed.Strings {
 	if !w.initialized {
 		Engine.Println("Tried to get a word from uninitialized wordbag!")
-		return []string{}
+		return Packed.MakeStrings()
 	}
 
-	words := []string{}
+	words := Packed.Strings{}
 
 	for i := w.CurIdx; i < w.CurIdx + count; i++ {
-		words = append(words, w.GetWord(i))
+		words.Append(String.New(w.GetWord(i)))
 	}
 	w.CurIdx += count
 
