@@ -1,6 +1,6 @@
 # graphics.gd bug demonstration
 
-This project demonstrates a bug in which using a Go-GDExtension-produced string in GDScript results in memory corruption.
+This project demonstrates a bug in which using a Go-GDExtension-produced string in GDScript results in memory corruption. Check the code embedded in main.tscn's root node for use of the GDExtension.
 
 # Issue
 When running the project, observe the output in the Godot editor. When `w` (the variable containing data from the GDExtension) is printed, what it contains will vary seemingly randomly.
