@@ -3,6 +3,9 @@ package wordlists_test
 import (
 	"gdextension/wordlists"
 	"testing"
+
+	"graphics.gd/variant/Packed"
+	"graphics.gd/variant/String"
 )
 
 func TestListUniqueness(t *testing.T) {
@@ -59,6 +62,8 @@ func TestBagMultipleOccurrence(t *testing.T) {
 			t.Errorf("Wrong # of occurrences in bag! (found %v, expected %v)", freq, occurrences)
 		}
 	}
+
+	a := Packed.Array[String.Readable]{}
 }
 
 func TestBagOOBIndexing(t *testing.T) {
